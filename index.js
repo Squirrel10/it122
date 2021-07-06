@@ -9,17 +9,21 @@ http.createServer((req,res) => {
         case '/':
             console.log('step 1')
             fs.readFile("home.html", (err, data) => {
-                console.log('step 2')
+                console.log('step 1')
              if (err) return console.error(err);
                 res.writeHead(200, {'Content-Type': 'text/html'});
              res.end(data.toString());
             });
 
-            console.log('step 3')
+            console.log('step 2')
             break;
         case '/about':
-            res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('About page');
+          fs.readFile("about.html", (err, data) => {
+             console.log('step 2')
+              if (err) return console.error(err);
+               res.writeHead(200, {'Content-Type': 'text/html'});
+                res.end(data.toString());
+            });
             break;
         default:
             res.writeHead(404, {'Content-Type': 'text/plain'});
